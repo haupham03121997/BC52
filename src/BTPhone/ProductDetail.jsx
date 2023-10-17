@@ -1,11 +1,17 @@
 // rafc
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 export const ProductDetail = () => {
+    const { productDetail } = useSelector((state) => state.btPhone)
+    // const productDetail = undefined
+    // console.log('productDetail: ', productDetail = undefined)
+
     return (
-        <div className="row">
+        <div className="row mt-5">
             <div className="col-4">
-                <img className="img-fluid" src="./images/vsphone.jpg" alt="..." />
+                {/* optional chaning */}
+                <img className="img-fluid" src={productDetail?.hinhAnh} alt="..." />
             </div>
             <div className="col-8">
                 <h2>Thông số kỹ thuật</h2>
@@ -14,27 +20,27 @@ export const ProductDetail = () => {
                     <tbody>
                         <tr>
                             <td>Màn hình</td>
-                            <td>AMOLED, 6.2Inch...</td>
+                            <td>{productDetail?.manHinh}</td>
                         </tr>
                         <tr>
                             <td>Hệ điều hành</td>
-                            <td>IOS</td>
+                            <td>{productDetail?.heDieuHanh}</td>
                         </tr>
                         <tr>
                             <td>Camera trước</td>
-                            <td>20MP</td>
+                            <td>{productDetail?.cameraTruoc}</td>
                         </tr>
                         <tr>
                             <td>Camera Sau</td>
-                            <td>40MP</td>
+                            <td>{productDetail?.cameraSau}</td>
                         </tr>
                         <tr>
                             <td>RAM</td>
-                            <td>16GB</td>
+                            <td>{productDetail?.ram}</td>
                         </tr>
                         <tr>
                             <td>ROM</td>
-                            <td>512GB</td>
+                            <td>{productDetail?.rom}</td>
                         </tr>
                     </tbody>
                 </table>
