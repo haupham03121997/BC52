@@ -28,7 +28,17 @@ export const ProductItem = ({ product }) => {
                         >
                             Detail
                         </button>
-                        <button className="btn btn-danger">Buy</button>
+                        <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                                dispatch({
+                                    type: 'ADD_CART',
+                                    payload: product,
+                                })
+                            }}
+                        >
+                            Buy
+                        </button>
                     </div>
                 </div>
             </div>

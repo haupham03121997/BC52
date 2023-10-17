@@ -1,7 +1,13 @@
 //rafc
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const Cart = () => {
+    const { carts } = useSelector((state) => state.btPhone)
+    console.log('carts: ', carts)
+
+    const dispatch = useDispatch()
+
     return (
         <div
             className="modal fade"
@@ -25,17 +31,16 @@ export const Cart = () => {
                     </div>
                     <div className="modal-body">
                         {/* Nếu carts rỗng */}
-                        {/* {!carts.length && <h2 className="text-center">Vui lòng chọn sản phẩm</h2>} */}
+                        {!carts.length && <h2 className="text-center">Vui lòng chọn sản phẩm</h2>}
 
                         {/* carts có sản phẩm */}
-                        {/* {!!carts.length && (
+                        {!!carts.length && (
                             <table className="table">
                                 <thead>
                                     <tr>
                                         <th>STT</th>
                                         <th>Image</th>
                                         <th>Name</th>
-                                        <th>Description</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
@@ -45,7 +50,7 @@ export const Cart = () => {
                                 <tbody>
                                     {carts.map((product, index) => {
                                         return (
-                                            <tr key={product.id}>
+                                            <tr key={product.maSP}>
                                                 <td>{index + 1}</td>
                                                 <td>
                                                     <img
@@ -53,47 +58,53 @@ export const Cart = () => {
                                                             width: 80,
                                                             height: 80,
                                                         }}
-                                                        src={product.image}
+                                                        src={product.hinhAnh}
                                                         alt="..."
                                                     />
                                                 </td>
-                                                <td>{product.name}</td>
-                                                <td>
-                                                    <p
-                                                        style={{
-                                                            maxWidth: 300,
-                                                        }}
-                                                    >
-                                                        {product.description}
-                                                    </p>
-                                                </td>
-                                                <td>{product.price}</td>
+                                                <td>{product.tenSP}</td>
+                                                <td>{product.giaBan}</td>
                                                 <td>
                                                     <button
                                                         className="btn btn-outline-success"
-                                                        onClick={() =>
-                                                            handleCartQuantity(product.id, 1)
-                                                        }
+                                                        onClick={() => {
+                                                            dispatch({
+                                                                type: 'HANDLE_CART_QUANTITY',
+                                                                payload: {
+                                                                    productId: product.maSP,
+                                                                    quantity: 1,
+                                                                },
+                                                            })
+                                                        }}
                                                     >
                                                         +
                                                     </button>
-                                                    <span className="mx-2">
-                                                        {product.cartQuantity}
-                                                    </span>
+                                                    <span className="mx-2">{product.soLuong}</span>
                                                     <button
                                                         className="btn btn-outline-danger"
-                                                        onClick={() =>
-                                                            handleCartQuantity(product.id, -1)
-                                                        }
+                                                        onClick={() => {
+                                                            dispatch({
+                                                                type: 'HANDLE_CART_QUANTITY',
+                                                                payload: {
+                                                                    productId: product.maSP,
+                                                                    quantity: -1,
+                                                                },
+                                                            })
+                                                        }}
                                                     >
                                                         -
                                                     </button>
                                                 </td>
-                                                <td>{product.cartQuantity * product.price}</td>
+                                                <td>{product.soLuong * product.giaBan}</td>
                                                 <td>
                                                     <button
                                                         className="btn btn-outline-dark"
-                                                        onClick={() => deleteCart(product.id)}
+                                                        onClick={() => {
+                                                            dispatch({
+                                                                type: 'DELETE_CART',
+                                                                payload: product.maSP,
+                                                            })
+                                                        }}
                                                     >
                                                         X
                                                     </button>
@@ -103,7 +114,7 @@ export const Cart = () => {
                                     })}
                                 </tbody>
                             </table>
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>
