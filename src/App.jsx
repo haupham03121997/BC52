@@ -3,6 +3,7 @@
 import { BTCar } from './BTCar/BTCar'
 import { BTComponent } from './BTComponent/BTComponent'
 import { BTMovie } from './BTMovie/BTMovie'
+import { BTPhone } from './BTPhone/BTPhone'
 import { BTShoeShop } from './BTShoeShop/BTShoeShop'
 import { Databinding } from './databinding/Databinding'
 import { DemoRedux } from './DemoRedux/DemoRedux'
@@ -42,6 +43,7 @@ function App() {
             <DemoProps />
             <BTShoeShop />
             <DemoRedux />
+            <BTPhone />
         </div>
     )
 }
