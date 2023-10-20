@@ -1,0 +1,23 @@
+.Chair {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #111;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.Chair.booking {
+    background: red;
+    color: #fff;
+    border: transparent;
+}
+
+.Chair.booked {
+    background: gray;
+    color: #fff;
+    border: transparent;
+    pointer-events: none;
+}

@@ -1,6 +1,7 @@
 //rafc
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { btPhoneActions } from '../store/BTPhone/actions'
 
 export const Cart = () => {
     const { carts } = useSelector((state) => state.btPhone)
@@ -68,13 +69,19 @@ export const Cart = () => {
                                                     <button
                                                         className="btn btn-outline-success"
                                                         onClick={() => {
-                                                            dispatch({
-                                                                type: 'HANDLE_CART_QUANTITY',
-                                                                payload: {
+                                                            // dispatch({
+                                                            //     type: 'HANDLE_CART_QUANTITY',
+                                                            //     payload: {
+                                                            //         productId: product.maSP,
+                                                            //         quantity: 1,
+                                                            //     },
+                                                            // })
+                                                            dispatch(
+                                                                btPhoneActions.handleCartQuantity({
                                                                     productId: product.maSP,
                                                                     quantity: 1,
-                                                                },
-                                                            })
+                                                                })
+                                                            )
                                                         }}
                                                     >
                                                         +
@@ -83,13 +90,19 @@ export const Cart = () => {
                                                     <button
                                                         className="btn btn-outline-danger"
                                                         onClick={() => {
-                                                            dispatch({
-                                                                type: 'HANDLE_CART_QUANTITY',
-                                                                payload: {
+                                                            // dispatch({
+                                                            //     type: 'HANDLE_CART_QUANTITY',
+                                                            //     payload: {
+                                                            //         productId: product.maSP,
+                                                            //         quantity: -1,
+                                                            //     },
+                                                            // })
+                                                            dispatch(
+                                                                btPhoneActions.handleCartQuantity({
                                                                     productId: product.maSP,
                                                                     quantity: -1,
-                                                                },
-                                                            })
+                                                                })
+                                                            )
                                                         }}
                                                     >
                                                         -
@@ -100,10 +113,15 @@ export const Cart = () => {
                                                     <button
                                                         className="btn btn-outline-dark"
                                                         onClick={() => {
-                                                            dispatch({
-                                                                type: 'DELETE_CART',
-                                                                payload: product.maSP,
-                                                            })
+                                                            // dispatch({
+                                                            //     type: 'DELETE_CART',
+                                                            //     payload: product.maSP,
+                                                            // })
+                                                            dispatch(
+                                                                btPhoneActions.deleteCart(
+                                                                    product.maSP
+                                                                )
+                                                            )
                                                         }}
                                                     >
                                                         X

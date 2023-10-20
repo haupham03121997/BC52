@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { btPhoneActions } from '../store/BTPhone/actions'
 
 export const ProductItem = ({ product }) => {
     console.log('product: ', product)
@@ -20,10 +21,11 @@ export const ProductItem = ({ product }) => {
                         <button
                             className="btn btn-success"
                             onClick={() => {
-                                dispatch({
-                                    type: 'SET_PRD_DETAIL',
-                                    payload: product,
-                                })
+                                // dispatch({
+                                //     type: 'SET_PRD_DETAIL',
+                                //     payload: product,
+                                // })
+                                dispatch(btPhoneActions.setProductDetail(product))
                             }}
                         >
                             Detail
@@ -31,10 +33,11 @@ export const ProductItem = ({ product }) => {
                         <button
                             className="btn btn-danger"
                             onClick={() => {
-                                dispatch({
-                                    type: 'ADD_CART',
-                                    payload: product,
-                                })
+                                // dispatch({
+                                //     type: 'ADD_CART',
+                                //     payload: product,
+                                // })
+                                dispatch(btPhoneActions.addCart(product))
                             }}
                         >
                             Buy

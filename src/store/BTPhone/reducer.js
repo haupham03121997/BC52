@@ -1,3 +1,5 @@
+import { BTPHONE_TYPE } from './type'
+
 const initialState = {
     productDetail: {
         maSP: 1,
@@ -31,10 +33,10 @@ const initialState = {
 export const btPhoneReducer = (state = initialState, action) => {
     console.log('action: ', action)
     switch (action.type) {
-        case 'SET_PRD_DETAIL': {
+        case BTPHONE_TYPE.setProductDetail: {
             return { ...state, productDetail: action.payload }
         }
-        case 'ADD_CART': {
+        case BTPHONE_TYPE.addCart: {
             const newCarts = [...state.carts]
 
             const index = newCarts.findIndex((value) => value.maSP === action.payload.maSP)
@@ -50,13 +52,13 @@ export const btPhoneReducer = (state = initialState, action) => {
                 carts: newCarts,
             }
         }
-        case 'HANDLE_CART_QUANTITY': {
+        case BTPHONE_TYPE.handleCartQuantity: {
             const newCarts = [...state.carts]
             const index = newCarts.findIndex((value) => value.maSP === action.payload.productId)
             newCarts[index].soLuong = newCarts[index].soLuong + action.payload.quantity || 1
             return { ...state, carts: newCarts }
         }
-        case 'DELETE_CART': {
+        case BTPHONE_TYPE.deleteCart: {
             const newCarts = state.carts.filter((value) => value.maSP !== action.payload)
 
             return { ...state, carts: newCarts }
