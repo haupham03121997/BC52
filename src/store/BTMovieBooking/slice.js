@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     number: 100,
+    gheVuaDat: ['c3', 'c4'],
     chairsBooking: [],
     chairsBooked: [],
 }

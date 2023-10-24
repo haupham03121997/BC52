@@ -2,6 +2,7 @@
 // import ClassComponent from './DemoComponent/ClassComponent'
 import { BTCar } from './BTCar/BTCar'
 import { BTComponent } from './BTComponent/BTComponent'
+import { BTForm } from './BTForm/BTForm'
 import { BTMovie } from './BTMovie/BTMovie'
 import { BTMovieBooking } from './BTMovieBooking/BTMovieBooking'
 import { BTPhone } from './BTPhone/BTPhone'
@@ -9,6 +10,7 @@ import { BTShoeShop } from './BTShoeShop/BTShoeShop'
 import { Databinding } from './databinding/Databinding'
 import { DemoRedux } from './DemoRedux/DemoRedux'
 import { DemoState } from './DemoState/DemoState'
+import { DemoUseEffect } from './DemoUseEffect/DemoUseEffect'
 import { HandleEvent } from './HandleEvent/HandleEvent'
 import { DemoProps } from './Props/DemoProps'
 import { RenderWithCondition } from './RenderWithCondition/RenderWithCondition'
@@ -46,6 +48,8 @@ function App() {
             <DemoRedux />
             <BTPhone />
             <BTMovieBooking />
+            <BTForm />
+            <DemoUseEffect />
         </div>
     )
 }
