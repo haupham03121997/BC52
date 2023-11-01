@@ -13,6 +13,7 @@ import { DemoState } from "./DemoState/DemoState";
 import { DemoUseEffect } from "./DemoUseEffect/DemoUseEffect";
 import { HandleEvent } from "./HandleEvent/HandleEvent";
 import { DemoProps } from "./Props/DemoProps";
+import ReduxThunk from "./ReduxThunk/ReduxThunk";
 import { RenderWithCondition } from "./RenderWithCondition/RenderWithCondition";
 import { RenderWithMap } from "./RenderWithMap/RenderWithMap";
 import { StyleComponent } from "./StyleComponent/StyleComponent";
@@ -47,8 +48,9 @@ function App() {
       <DemoRedux />
       <BTPhone />
       <BTMovieBooking /> */}
-      <BTForm />
-      <DemoUseEffect />
+      {/* <BTForm /> */}
+      {/* <DemoUseEffect /> */}
+      <ReduxThunk />
     </div>
   );
 }
