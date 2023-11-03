@@ -6,18 +6,25 @@ const initialState = {
   animalList: [],
 };
 
-export const getListAnimalApi = createAsyncThunk("animal/getList", async () => {
-  try {
-    const response = await axios({
-      url: "https://6534da22e1b6f4c59046fb97.mockapi.io/animal",
-      method: "GET",
-    });
-    return response.data;
-  } catch (error) {
-    console.log("error", error);
-    throw Error("Api not found");
+export const getListAnimalApi = createAsyncThunk(
+  "animal/getList",
+  async (params) => {
+    try {
+      const response = await axios({
+        url: "https://6534da22e1b6f4c59046fb97.mockapi.io/animal",
+        method: "GET",
+        params: {
+          page: params.page || 1,
+          limit: 10,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.log("error", error);
+      throw Error("Api not found");
+    }
   }
-});
+);
 
 export const addAnimalApi = createAsyncThunk(
   "animal/add",

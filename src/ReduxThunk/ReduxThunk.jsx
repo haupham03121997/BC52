@@ -14,7 +14,6 @@ import animationData from "../Lotties/loading.json";
 const ReduxThunk = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.animal);
-  console.log("isLoading", isLoading);
 
   const defaultOptions = {
     loop: true,
@@ -22,13 +21,14 @@ const ReduxThunk = () => {
     animationData: animationData,
   };
 
-  useEffect(() => {
-    dispatch(getListAnimalApi());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getListAnimalApi());
+  // }, []);
 
   return (
     <div className="container">
-      {isLoading ? (
+      <AnimalList />
+      {/* {isLoading ? (
         <Lottie options={defaultOptions} width={200} height={200} />
       ) : (
         <>
@@ -36,7 +36,7 @@ const ReduxThunk = () => {
           <AnimalForm />
           <AnimalList />
         </>
-      )}
+      )} */}
     </div>
   );
 };

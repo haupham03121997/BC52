@@ -7,16 +7,27 @@ import { BTMovie } from "./BTMovie/BTMovie";
 import { BTMovieBooking } from "./BTMovieBooking/BTMovieBooking";
 import { BTPhone } from "./BTPhone/BTPhone";
 import { BTShoeShop } from "./BTShoeShop/BTShoeShop";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import { Databinding } from "./databinding/Databinding";
 import { DemoRedux } from "./DemoRedux/DemoRedux";
 import { DemoState } from "./DemoState/DemoState";
 import { DemoUseEffect } from "./DemoUseEffect/DemoUseEffect";
 import { HandleEvent } from "./HandleEvent/HandleEvent";
+import AboutPage from "./pages/AboutPage";
+import AdminPage from "./pages/AdminPage";
+import ContactPage from "./pages/ContactPage";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 import { DemoProps } from "./Props/DemoProps";
 import ReduxThunk from "./ReduxThunk/ReduxThunk";
 import { RenderWithCondition } from "./RenderWithCondition/RenderWithCondition";
 import { RenderWithMap } from "./RenderWithMap/RenderWithMap";
 import { StyleComponent } from "./StyleComponent/StyleComponent";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserLayout from "./layouts/UserLayout";
+import MainLayout from "./layouts/AdminLayout";
+import AnimalDetails from "./pages/AnimalDetails";
 
 // JSX => Javascript XML => cú pháp hỗ trợ viết thẻ html ở trong javascript
 // attribute => viết theo quy tắc camelCase
@@ -31,27 +42,28 @@ import { StyleComponent } from "./StyleComponent/StyleComponent";
 // component lớn nhất trong dự án
 function App() {
   return (
-    <div className="description" tabIndex="1">
-      {/* <FunctionComponent></FunctionComponent>
-            <ClassComponent /> */}
-      {/* <BTComponent />
-      <Databinding />
-      <RenderWithCondition />
-      <HandleEvent />
-      <RenderWithMap />
-      <BTMovie />
-      <StyleComponent />
-      <DemoState />
-      <BTCar />
-      <DemoProps />
-      <BTShoeShop />
-      <DemoRedux />
-      <BTPhone />
-      <BTMovieBooking /> */}
-      {/* <BTForm /> */}
-      {/* <DemoUseEffect /> */}
-      <ReduxThunk />
-    </div>
+    <BrowserRouter>
+      {/* <Header /> */}
+      <Routes>
+        {/* <Route path="/" element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="admin/dashboard" element={<AdminPage />} />
+        <Route path="*" element={<NotFound />} /> */}
+
+        {/* Nested Router */}
+        <Route path="/" element={<UserLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="animals" element={<ReduxThunk />} />
+          {/* Dynamic segments */}
+          {/* animals/1 , animals/2 , animals/3 */}
+          <Route path="animals/:id" element={<AnimalDetails />} />
+        </Route>
+      </Routes>
+      {/* <Footer /> */}
+    </BrowserRouter>
   );
 }
 

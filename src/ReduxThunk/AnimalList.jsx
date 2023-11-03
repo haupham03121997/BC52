@@ -1,9 +1,31 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { getListAnimalApi } from "../store/Animals/slice";
 
 const AnimalList = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { animalList } = useSelector((state) => state.animal);
-  console.log("animalList", animalList);
+
+  //items : 100, pageSize: 10
+  const pages = Array.from(
+    { length: Math.ceil(99 / 10) },
+    (_, index) => index + 1
+  );
+
+  const handleOnChangePage = (page) => {
+    searchParams.set("page", page);
+    setSearchParams(searchParams);
+  };
+
+  useEffect(() => {
+    dispatch(getListAnimalApi({ page: searchParams.get("page") }));
+  }, [searchParams]);
+
+  console.log("searchParams", searchParams.get("page"));
+
   return (
     <div className="mt-5">
       <div className="table-responsive">
@@ -36,12 +58,27 @@ const AnimalList = () => {
                     <button className="btn btn-success ms-3">
                       <i class="fa-solid fa-pen-to-square"></i>
                     </button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        navigate(`${item.id}`);
+                      }}
+                    >
+                      Xem chi tiết
+                    </button>
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+        <div>
+          {pages.map((page) => (
+            <button className="btn" onClick={() => handleOnChangePage(page)}>
+              {page}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
