@@ -17,6 +17,9 @@ const Header = () => {
         <li>
           <Link to="/animals">List Animals</Link>
         </li>
+        <li>
+          <Link to="/demo-tailwind">Demo Tailwind Css</Link>
+        </li>
       </ul>
     </nav>
   );
