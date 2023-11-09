@@ -29,6 +29,8 @@ import UserLayout from "./layouts/UserLayout";
 import MainLayout from "./layouts/AdminLayout";
 import AnimalDetails from "./pages/AnimalDetails";
 import DemoTailwincss from "./pages/DemoTailwindcss/DemoTailwincss";
+import DemoRef from "./pages/DemoRef";
+import CustomHooks from "./pages/CustomHooks";
 
 // JSX => Javascript XML => cú pháp hỗ trợ viết thẻ html ở trong javascript
 // attribute => viết theo quy tắc camelCase
@@ -59,6 +61,8 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="animals" element={<ReduxThunk />} />
           <Route path="demo-tailwind" element={<DemoTailwincss />} />
+          <Route path="demo-ref" element={<DemoRef />} />
+          <Route path="demo-custom-hooks" element={<CustomHooks />} />
           {/* Dynamic segments */}
           {/* animals/1 , animals/2 , animals/3 */}
           <Route path="animals/:id" element={<AnimalDetails />} />
